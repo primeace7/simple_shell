@@ -45,7 +45,7 @@ int main(int argc, char **argv, char *envp[])
 			free(tokenized_buf[i]);
 		free(tokenized_buf); }
 	if (input_line == -1 || input_line == EOF)
-		printf("Process terminated: EOF encountered\n");
+		printf("\n");
 	exit(EXIT_SUCCESS); }
 
 /**
