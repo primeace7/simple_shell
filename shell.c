@@ -58,6 +58,7 @@ int main(int argc, char **argv, char *envp[])
 void execute_child(char **tokenized_buf, char *envp[])
 {
 	int i, child_exec;
+
 	for (i = 0; tokenized_buf[i] != NULL; i++)
 		strip(&tokenized_buf[i]);
 	child_exec = execve(tokenized_buf[0], tokenized_buf, envp);
