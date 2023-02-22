@@ -18,14 +18,16 @@ ssize_t get_inputline(char **destination)
 	bytes_read = getline(linebuf, &bufsize, stdin);
 
 	if (bytes_read == -1 || bytes_read == EOF)
+	{
+		free(*linebuf);
 		return (bytes_read);
+	}
 	*destination = malloc(bytes_read + 1);
 	if (*destination == NULL)
 		perror("getline() - Couldn't allocate destination memory");
 
 	strcpy(*destination, *linebuf);
 	free(*linebuf);
-
 	return (bytes_read);
 }
 
