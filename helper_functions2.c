@@ -24,5 +24,5 @@ pid_t fork_child(void)
 void display_prompt(void)
 {
 
-	printf("$ ");
+	printf("#cisfun$ ");
 }
