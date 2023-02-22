@@ -63,6 +63,6 @@ void execute_child(char **tokenized_buf, char *envp[])
 		strip(&tokenized_buf[i]);
 	child_exec = execve(tokenized_buf[0], tokenized_buf, envp);
 	if (child_exec == -1)
-		perror("child_exec error");
+		perror(tokenized_buf[0]);
 	exit(EXIT_SUCCESS);
 }
