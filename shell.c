@@ -19,7 +19,6 @@ int main(int argc, char **argv, char *envp[])
 	tokenized_buf = NULL;
 	display_prompt();
 	argc = argc;
-	argv = argv;
 
 	input_line = get_inputline(&input_buffer);
 
@@ -31,7 +30,7 @@ int main(int argc, char **argv, char *envp[])
 		if (child_fork == -1)
 			perror("There was a fork error");
 		else if (child_fork == 0)
-			execute_child(tokenized_buf, envp);
+			execute_child(tokenized_buf, envp, argv);
 		else
 			wait(NULL);
 		display_prompt();
@@ -55,7 +54,7 @@ int main(int argc, char **argv, char *envp[])
  * Return: nothing
  */
 
-void execute_child(char **tokenized_buf, char *envp[])
+void execute_child(char **tokenized_buf, char *envp[], char **argv)
 {
 	int i, child_exec;
 
@@ -63,6 +62,6 @@ void execute_child(char **tokenized_buf, char *envp[])
 		strip(&tokenized_buf[i]);
 	child_exec = execve(tokenized_buf[0], tokenized_buf, envp);
 	if (child_exec == -1)
-		perror(tokenized_buf[0]);
+		perror(argv[0]);
 	exit(EXIT_SUCCESS);
 }
