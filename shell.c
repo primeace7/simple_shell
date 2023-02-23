@@ -29,7 +29,7 @@ int main(int argc, char **argv, char *envp[])
 
 		if (child_fork == -1)
 			perror("There was a fork error");
-		else if (child_fork == 0)
+		else if (child_fork == 0 && tokenized_buf[0] != NULL)
 			execute_child(tokenized_buf, envp, argv);
 		else
 			wait(NULL);
@@ -59,7 +59,7 @@ void execute_child(char **tokenized_buf, char *envp[], char **argv)
 	int i, child_exec;
 
 	for (i = 0; tokenized_buf[i] != NULL; i++)
-		strip(&tokenized_buf[i]);
+		strip(&tokenized_buf[i]); /*strip removes whitespace*/
 	child_exec = execve(tokenized_buf[0], tokenized_buf, envp);
 	if (child_exec == -1)
 		perror(argv[0]);
