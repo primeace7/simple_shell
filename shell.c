@@ -17,7 +17,7 @@ int main(int argc, char **argv, char *envp[])
 
 	input_buffer = NULL;
 	tokenized_buf = NULL;
-	display_prompt();
+/*	display_prompt(); */
 	argc = argc;
 
 	input_line = get_inputline(&input_buffer);
@@ -33,7 +33,7 @@ int main(int argc, char **argv, char *envp[])
 			execute_child(tokenized_buf, envp, argv);
 		else
 			wait(NULL);
-		display_prompt();
+/*		display_prompt();*/
 		input_line = get_inputline(&input_buffer); }
 
 	if (input_buffer != NULL)
@@ -43,8 +43,8 @@ int main(int argc, char **argv, char *envp[])
 		for (i = 0; tokenized_buf[i] != NULL; i++)
 			free(tokenized_buf[i]);
 		free(tokenized_buf); }
-	if (input_line == -1 || input_line == EOF)
-		printf("\n");
+/*	if (input_line == -1 || input_line == EOF)*/
+/*		printf("\n");*/
 	exit(EXIT_SUCCESS); }
 
 /**
