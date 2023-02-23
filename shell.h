@@ -7,6 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+
 void display_prompt(void);
 void tokenize(char *, char ***);
 void ops_error(int);
