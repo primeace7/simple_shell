@@ -50,6 +50,7 @@ int main(int argc, char **argv, char *envp[])
 /**
  * execute_child - execite a command with execve, in the child process
  * @tokenized_buf: buffer containing pointers to input tokens
+ * @argv: argument vector from main
  * @envp: the environment list for execve
  * Return: nothing
  */
